@@ -96,106 +96,70 @@
     class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden"
   >
     <!-- Header de la tabla -->
-    <div class="bg-gray-50 px-6 py-3 border-b border-gray-200">
+    <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
       <div class="flex items-center justify-between">
         <h3 class="text-lg font-medium text-gray-900">Certificados (127)</h3>
-        <div class="flex items-center space-x-2">
-          <button class="text-gray-400 hover:text-gray-600">
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 10h16M4 14h16M4 18h16"
-              ></path>
-            </svg>
-          </button>
-          <button class="text-gray-400 hover:text-gray-600">
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-              ></path>
-            </svg>
-          </button>
-        </div>
       </div>
     </div>
 
-    <!-- Contenido de la tabla -->
+    <!-- Contenido responsive -->
     <div class="overflow-x-auto">
-      <table class="min-w-full divide-y divide-gray-200">
-        <thead class="bg-gray-50">
-          <tr>
-            <th
-              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            >
-              <input
-                type="checkbox"
-                class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-              />
-            </th>
-            <th
-              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            >
-              Certificado
-            </th>
-            <th
-              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            >
-              Propietario
-            </th>
-            <th
-              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            >
-              Estado
-            </th>
-            <th
-              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            >
-              Fecha Emisión
-            </th>
-            <th
-              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            >
-              Fecha Expiración
-            </th>
-            <th
-              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            >
-              Acciones
-            </th>
-          </tr>
-        </thead>
-        <tbody class="bg-white divide-y divide-gray-200">
-          <!-- Fila 1 -->
-          <tr class="hover:bg-gray-50 transition-colors duration-150">
-            <td class="px-6 py-4 whitespace-nowrap">
-              <input
-                type="checkbox"
-                class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-              />
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <div class="flex items-center">
-                <div class="flex-shrink-0 h-10 w-10">
+      <!-- Vista desktop -->
+      <div class="hidden lg:block">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th
+                class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-8"
+              >
+                <input
+                  type="checkbox"
+                  class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                />
+              </th>
+              <th
+                class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                Certificado
+              </th>
+              <th
+                class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                Propietario
+              </th>
+              <th
+                class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                Estado
+              </th>
+              <th
+                class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                Expiración
+              </th>
+              <th
+                class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-24"
+              >
+                Acciones
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <!-- Fila 1 -->
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-4">
+                <input
+                  type="checkbox"
+                  class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                />
+              </td>
+              <td class="px-4 py-4">
+                <div class="flex items-center">
                   <div
-                    class="h-10 w-10 rounded-lg bg-blue-100 flex items-center justify-center"
+                    class="h-8 w-8 rounded-lg bg-blue-100 flex items-center justify-center mr-3"
                   >
                     <svg
-                      class="h-6 w-6 text-blue-600"
+                      class="h-5 w-5 text-blue-600"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -208,126 +172,111 @@
                       ></path>
                     </svg>
                   </div>
-                </div>
-                <div class="ml-4">
-                  <div class="text-sm font-medium text-gray-900">
-                    Certificado SSL - Dominio Principal
+                  <div>
+                    <div class="text-sm font-medium text-gray-900">
+                      Certificado SSL - Dominio Principal
+                    </div>
+                    <div class="text-sm text-gray-500">ID: CERT-2025-001</div>
                   </div>
-                  <div class="text-sm text-gray-500">ID: CERT-2025-001</div>
                 </div>
-              </div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <div class="flex items-center">
-                <div class="flex-shrink-0 h-8 w-8">
+              </td>
+              <td class="px-4 py-4">
+                <div class="flex items-center">
                   <div
-                    class="h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center"
+                    class="h-6 w-6 rounded-full bg-gray-300 flex items-center justify-center mr-2"
                   >
-                    <span class="text-sm font-medium text-gray-700">JD</span>
+                    <span class="text-xs font-medium text-gray-700">JD</span>
+                  </div>
+                  <div>
+                    <div class="text-sm font-medium text-gray-900">
+                      Juan Pérez
+                    </div>
+                    <div class="text-xs text-gray-500">
+                      juan.perez&#64;empresa.com
+                    </div>
                   </div>
                 </div>
-                <div class="ml-3">
-                  <div class="text-sm font-medium text-gray-900">
-                    Juan Pérez
-                  </div>
-                  <div class="text-sm text-gray-500">
-                    juan.perez&#64;empresa.com
-                  </div>
+              </td>
+              <td class="px-4 py-4">
+                <span
+                  class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800"
+                >
+                  Activo
+                </span>
+              </td>
+              <td class="px-4 py-4 text-sm text-gray-900">15 Ene 2026</td>
+              <td class="px-4 py-4">
+                <div class="flex items-center space-x-2">
+                  <button class="text-blue-600 hover:text-blue-900">
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      ></path>
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      ></path>
+                    </svg>
+                  </button>
+                  <button class="text-gray-600 hover:text-gray-900">
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                      ></path>
+                    </svg>
+                  </button>
+                  <button class="text-red-600 hover:text-red-900">
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      ></path>
+                    </svg>
+                  </button>
                 </div>
-              </div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <span
-                class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800"
-              >
-                Activo
-              </span>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-              15 Ene 2025
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-              15 Ene 2026
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-              <div class="flex items-center space-x-2">
-                <button
-                  class="text-blue-600 hover:text-blue-900 transition-colors duration-150"
-                >
-                  <svg
-                    class="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    ></path>
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                    ></path>
-                  </svg>
-                </button>
-                <button
-                  class="text-gray-600 hover:text-gray-900 transition-colors duration-150"
-                >
-                  <svg
-                    class="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                    ></path>
-                  </svg>
-                </button>
-                <button
-                  class="text-red-600 hover:text-red-900 transition-colors duration-150"
-                >
-                  <svg
-                    class="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-            </td>
-          </tr>
+              </td>
+            </tr>
 
-          <!-- Fila 2 -->
-          <tr class="hover:bg-gray-50 transition-colors duration-150">
-            <td class="px-6 py-4 whitespace-nowrap">
-              <input
-                type="checkbox"
-                class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-              />
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <div class="flex items-center">
-                <div class="flex-shrink-0 h-10 w-10">
+            <!-- Fila 2 -->
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-4">
+                <input
+                  type="checkbox"
+                  class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                />
+              </td>
+              <td class="px-4 py-4">
+                <div class="flex items-center">
                   <div
-                    class="h-10 w-10 rounded-lg bg-yellow-100 flex items-center justify-center"
+                    class="h-8 w-8 rounded-lg bg-yellow-100 flex items-center justify-center mr-3"
                   >
                     <svg
-                      class="h-6 w-6 text-yellow-600"
+                      class="h-5 w-5 text-yellow-600"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -340,126 +289,111 @@
                       ></path>
                     </svg>
                   </div>
-                </div>
-                <div class="ml-4">
-                  <div class="text-sm font-medium text-gray-900">
-                    Certificado Código - Aplicación Web
+                  <div>
+                    <div class="text-sm font-medium text-gray-900">
+                      Certificado Código - Aplicación Web
+                    </div>
+                    <div class="text-sm text-gray-500">ID: CERT-2025-002</div>
                   </div>
-                  <div class="text-sm text-gray-500">ID: CERT-2025-002</div>
                 </div>
-              </div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <div class="flex items-center">
-                <div class="flex-shrink-0 h-8 w-8">
+              </td>
+              <td class="px-4 py-4">
+                <div class="flex items-center">
                   <div
-                    class="h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center"
+                    class="h-6 w-6 rounded-full bg-gray-300 flex items-center justify-center mr-2"
                   >
-                    <span class="text-sm font-medium text-gray-700">MG</span>
+                    <span class="text-xs font-medium text-gray-700">MG</span>
+                  </div>
+                  <div>
+                    <div class="text-sm font-medium text-gray-900">
+                      María García
+                    </div>
+                    <div class="text-xs text-gray-500">
+                      maria.garcia&#64;empresa.com
+                    </div>
                   </div>
                 </div>
-                <div class="ml-3">
-                  <div class="text-sm font-medium text-gray-900">
-                    María García
-                  </div>
-                  <div class="text-sm text-gray-500">
-                    maria.garcia&#64;empresa.com
-                  </div>
+              </td>
+              <td class="px-4 py-4">
+                <span
+                  class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800"
+                >
+                  Por vencer
+                </span>
+              </td>
+              <td class="px-4 py-4 text-sm text-gray-900">10 Feb 2025</td>
+              <td class="px-4 py-4">
+                <div class="flex items-center space-x-2">
+                  <button class="text-blue-600 hover:text-blue-900">
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 616 0z"
+                      ></path>
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      ></path>
+                    </svg>
+                  </button>
+                  <button class="text-gray-600 hover:text-gray-900">
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                      ></path>
+                    </svg>
+                  </button>
+                  <button class="text-red-600 hover:text-red-900">
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      ></path>
+                    </svg>
+                  </button>
                 </div>
-              </div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <span
-                class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800"
-              >
-                Por vencer
-              </span>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-              10 Feb 2024
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-              10 Feb 2025
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-              <div class="flex items-center space-x-2">
-                <button
-                  class="text-blue-600 hover:text-blue-900 transition-colors duration-150"
-                >
-                  <svg
-                    class="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    ></path>
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                    ></path>
-                  </svg>
-                </button>
-                <button
-                  class="text-gray-600 hover:text-gray-900 transition-colors duration-150"
-                >
-                  <svg
-                    class="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                    ></path>
-                  </svg>
-                </button>
-                <button
-                  class="text-red-600 hover:text-red-900 transition-colors duration-150"
-                >
-                  <svg
-                    class="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-            </td>
-          </tr>
+              </td>
+            </tr>
 
-          <!-- Fila 3 -->
-          <tr class="hover:bg-gray-50 transition-colors duration-150">
-            <td class="px-6 py-4 whitespace-nowrap">
-              <input
-                type="checkbox"
-                class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-              />
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <div class="flex items-center">
-                <div class="flex-shrink-0 h-10 w-10">
+            <!-- Fila 3 -->
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-4">
+                <input
+                  type="checkbox"
+                  class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                />
+              </td>
+              <td class="px-4 py-4">
+                <div class="flex items-center">
                   <div
-                    class="h-10 w-10 rounded-lg bg-red-100 flex items-center justify-center"
+                    class="h-8 w-8 rounded-lg bg-red-100 flex items-center justify-center mr-3"
                   >
                     <svg
-                      class="h-6 w-6 text-red-600"
+                      class="h-5 w-5 text-red-600"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -472,111 +406,347 @@
                       ></path>
                     </svg>
                   </div>
-                </div>
-                <div class="ml-4">
-                  <div class="text-sm font-medium text-gray-900">
-                    Certificado Email - Comunicaciones
+                  <div>
+                    <div class="text-sm font-medium text-gray-900">
+                      Certificado Email - Comunicaciones
+                    </div>
+                    <div class="text-sm text-gray-500">ID: CERT-2024-089</div>
                   </div>
-                  <div class="text-sm text-gray-500">ID: CERT-2024-089</div>
                 </div>
-              </div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <div class="flex items-center">
-                <div class="flex-shrink-0 h-8 w-8">
+              </td>
+              <td class="px-4 py-4">
+                <div class="flex items-center">
                   <div
-                    class="h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center"
+                    class="h-6 w-6 rounded-full bg-gray-300 flex items-center justify-center mr-2"
                   >
-                    <span class="text-sm font-medium text-gray-700">CR</span>
+                    <span class="text-xs font-medium text-gray-700">CR</span>
+                  </div>
+                  <div>
+                    <div class="text-sm font-medium text-gray-900">
+                      Carlos Rodríguez
+                    </div>
+                    <div class="text-xs text-gray-500">
+                      carlos.rodriguez&#64;empresa.com
+                    </div>
                   </div>
                 </div>
-                <div class="ml-3">
-                  <div class="text-sm font-medium text-gray-900">
-                    Carlos Rodríguez
-                  </div>
-                  <div class="text-sm text-gray-500">
-                    carlos.rodriguez&#64;empresa.com
-                  </div>
+              </td>
+              <td class="px-4 py-4">
+                <span
+                  class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800"
+                >
+                  Expirado
+                </span>
+              </td>
+              <td class="px-4 py-4 text-sm text-gray-900">05 Dic 2024</td>
+              <td class="px-4 py-4">
+                <div class="flex items-center space-x-2">
+                  <button class="text-blue-600 hover:text-blue-900">
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 616 0z"
+                      ></path>
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      ></path>
+                    </svg>
+                  </button>
+                  <button class="text-blue-600 hover:text-blue-900">
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                      ></path>
+                    </svg>
+                  </button>
+                  <button class="text-red-600 hover:text-red-900">
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      ></path>
+                    </svg>
+                  </button>
                 </div>
-              </div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <span
-                class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800"
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Vista móvil -->
+      <div class="lg:hidden">
+        <!-- Card 1 -->
+        <div class="p-4 border-b border-gray-200">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center flex-1">
+              <input
+                type="checkbox"
+                class="rounded border-gray-300 text-blue-600 focus:ring-blue-500 mr-3"
+              />
+              <div
+                class="h-8 w-8 rounded-lg bg-blue-100 flex items-center justify-center mr-3"
               >
-                Expirado
-              </span>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-              05 Dic 2023
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-              05 Dic 2024
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-              <div class="flex items-center space-x-2">
-                <button
-                  class="text-blue-600 hover:text-blue-900 transition-colors duration-150"
+                <svg
+                  class="h-5 w-5 text-blue-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  <svg
-                    class="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    ></path>
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                    ></path>
-                  </svg>
-                </button>
-                <button
-                  class="text-gray-600 hover:text-gray-900 transition-colors duration-150"
-                >
-                  <svg
-                    class="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                    ></path>
-                  </svg>
-                </button>
-                <button
-                  class="text-red-600 hover:text-red-900 transition-colors duration-150"
-                >
-                  <svg
-                    class="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                    ></path>
-                  </svg>
-                </button>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
               </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              <div class="flex-1 min-w-0">
+                <div class="text-sm font-medium text-gray-900 truncate">
+                  Certificado SSL - Dominio Principal
+                </div>
+                <div class="text-sm text-gray-500">ID: CERT-2025-001</div>
+                <div class="text-sm text-gray-500 mt-1">Juan Pérez</div>
+                <div class="flex items-center mt-2">
+                  <span
+                    class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800 mr-2"
+                  >
+                    Activo
+                  </span>
+                  <span class="text-xs text-gray-500">Exp: 15 Ene 2026</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-2 ml-2">
+              <button class="text-blue-600 hover:text-blue-900 p-1">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 616 0z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  ></path>
+                </svg>
+              </button>
+              <button class="text-gray-600 hover:text-gray-900 p-1">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="p-4 border-b border-gray-200">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center flex-1">
+              <input
+                type="checkbox"
+                class="rounded border-gray-300 text-blue-600 focus:ring-blue-500 mr-3"
+              />
+              <div
+                class="h-8 w-8 rounded-lg bg-yellow-100 flex items-center justify-center mr-3"
+              >
+                <svg
+                  class="h-5 w-5 text-yellow-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.268 16.5c-.77.833.192 2.5 1.732 2.5z"
+                  ></path>
+                </svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="text-sm font-medium text-gray-900 truncate">
+                  Certificado Código - Aplicación Web
+                </div>
+                <div class="text-sm text-gray-500">ID: CERT-2025-002</div>
+                <div class="text-sm text-gray-500 mt-1">María García</div>
+                <div class="flex items-center mt-2">
+                  <span
+                    class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800 mr-2"
+                  >
+                    Por vencer
+                  </span>
+                  <span class="text-xs text-gray-500">Exp: 10 Feb 2025</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-2 ml-2">
+              <button class="text-blue-600 hover:text-blue-900 p-1">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 616 0z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  ></path>
+                </svg>
+              </button>
+              <button class="text-gray-600 hover:text-gray-900 p-1">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="p-4">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center flex-1">
+              <input
+                type="checkbox"
+                class="rounded border-gray-300 text-blue-600 focus:ring-blue-500 mr-3"
+              />
+              <div
+                class="h-8 w-8 rounded-lg bg-red-100 flex items-center justify-center mr-3"
+              >
+                <svg
+                  class="h-5 w-5 text-red-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  ></path>
+                </svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="text-sm font-medium text-gray-900 truncate">
+                  Certificado Email - Comunicaciones
+                </div>
+                <div class="text-sm text-gray-500">ID: CERT-2024-089</div>
+                <div class="text-sm text-gray-500 mt-1">Carlos Rodríguez</div>
+                <div class="flex items-center mt-2">
+                  <span
+                    class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800 mr-2"
+                  >
+                    Expirado
+                  </span>
+                  <span class="text-xs text-gray-500">Exp: 05 Dic 2024</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-2 ml-2">
+              <button class="text-blue-600 hover:text-blue-900 p-1">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 616 0z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  ></path>
+                </svg>
+              </button>
+              <button class="text-blue-600 hover:text-blue-900 p-1">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Paginación -->
