@@ -1,1 +1,101 @@
-<p>cargar-certificado works!</p>
+<div class="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+  <h2 class="text-2xl font-bold mb-6 text-gray-800">Cargar Certificado</h2>
+
+  <form (ngSubmit)="uploadCertificado()" class="space-y-4">
+    <div>
+      <label
+        for="fileInput"
+        class="block text-sm font-medium text-gray-700 mb-2"
+      >
+        Seleccionar archivo de certificado
+      </label>
+      <input
+        id="fileInput"
+        type="file"
+        (change)="onFileSelected($event)"
+        accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+        class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+      />
+    </div>
+
+    <div class="flex space-x-4">
+      <button
+        type="submit"
+        [disabled]="!selectedFile || isUploading"
+        class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition duration-200"
+      >
+        <span *ngIf="!isUploading">Subir Certificado</span>
+        <span *ngIf="isUploading" class="flex items-center justify-center">
+          <svg
+            class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
+          </svg>
+          Subiendo...
+        </span>
+      </button>
+
+      <button
+        type="button"
+        (click)="resetForm()"
+        class="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition duration-200"
+      >
+        Limpiar
+      </button>
+    </div>
+  </form>
+
+  <!-- Mensaje de error -->
+  <div
+    *ngIf="errorMessage"
+    class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md"
+  >
+    {{ errorMessage }}
+  </div>
+
+  <!-- Resultado exitoso -->
+  <div
+    *ngIf="uploadResult"
+    class="mt-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md"
+  >
+    <h3 class="font-semibold mb-2">Certificado cargado exitosamente:</h3>
+    <div class="text-sm space-y-1">
+      <p><strong>ID:</strong> {{ uploadResult.id }}</p>
+      <p><strong>Código:</strong> {{ uploadResult.code }}</p>
+      <p><strong>Nombre:</strong> {{ uploadResult.name }}</p>
+      <p>
+        <strong>Apellido Paterno:</strong> {{ uploadResult.paternalLastName }}
+      </p>
+      <p>
+        <strong>Apellido Materno:</strong> {{ uploadResult.maternalLastName }}
+      </p>
+      <p><strong>Certificación:</strong> {{ uploadResult.certification }}</p>
+      <p><strong>Válido hasta:</strong> {{ uploadResult.validUntil }}</p>
+      <p><strong>Estado:</strong> {{ uploadResult.status }}</p>
+      <p *ngIf="uploadResult.link">
+        <strong>Enlace:</strong>
+        <a
+          [href]="uploadResult.link"
+          target="_blank"
+          class="text-blue-600 hover:underline"
+          >Ver certificado</a
+        >
+      </p>
+    </div>
+  </div>
+</div>

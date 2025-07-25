@@ -9,3 +9,26 @@
 9. En el componente sidebar, maqueta un sidebar correcto con tailwind, en donde existan dos opciones, lista-certificado y cargar-certificado
 10. Disename una tabla tipo lista del componente lista-certificado con tailwind.
 11. En el HTML de lista-certficiado, crea un boton modal donde se permita cargar un archivo.
+12. En el directorio Core crea un service: certificado.service.ts que permita
+subir un MultipartFile y obtenga un response como este:
+
+    Long id,
+    String code,
+    String name,
+    String maternalLastName,
+    String paternalLastName,
+    String grouping,
+    String certification,
+    LocalDate validUntil,
+    String expired,
+    String pdf,
+    String link,
+    String status,
+    String assignment,
+    String observations,
+    String documentPath,
+    String errorLog,
+    String creationDate,
+    Long downloadStatusId,
+    String downloadStatusName
+
