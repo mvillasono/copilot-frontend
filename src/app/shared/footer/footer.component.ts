@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
-  standalone: true, // This component can be used independently without being declared in a module
+  standalone: true,
+  imports: [RouterModule],
 })
 export class FooterComponent {
   // Add component logic here

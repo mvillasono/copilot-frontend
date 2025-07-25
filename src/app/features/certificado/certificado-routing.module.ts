@@ -14,3 +14,5 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class CertificadoRoutingModule {}
+
+// Este archivo ya no es necesario porque las rutas se consolidaron en app.routes.ts.
