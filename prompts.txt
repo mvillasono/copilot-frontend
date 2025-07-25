@@ -7,3 +7,5 @@
 7. En el directorio app/shared genera un modulo con el nombre shared
 8. Crea los siguientes componentes en el directorio shared: sidebar, header y footer con tailwind, e importa los componentes en shared.module.ts
 9. En el componente sidebar, maqueta un sidebar correcto con tailwind, en donde existan dos opciones, lista-certificado y cargar-certificado
+10. Disename una tabla tipo lista del componente lista-certificado con tailwind.
+11. En el HTML de lista-certficiado, crea un boton modal donde se permita cargar un archivo.
