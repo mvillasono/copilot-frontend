@@ -1,0 +1,6 @@
+1. Crea los directiorios core, features y shared en app
+2. En el directorio app/feacture crea un directorio certificado y dentro genera un modulo y routing
+3. En el directorio app/feacture/certificado crea un componente lista-certificado con su respectivo carpeta e importa el componente en el modulo certificado
+4. En el directorio app/feacture/certificado crea un componente cargar-certificado con su respectivo carpeta e importa el componente en el modulo certificado
+5. Agrega las rutas en routing certificado de dos los componentes generados y por defecto que redirija al componente lista-certificado
+6. Agrega la ruta /certificado que utiliza el modulo certificado en app.routes
