@@ -43,7 +43,7 @@ export class CertificadoService {
    * @returns Observable con array de certificados
    */
   getAllCertificados(): Observable<CertificadoResponse[]> {
-    return this.http.get<CertificadoResponse[]>(`${this.apiUrl}/certificados`);
+    return this.http.get<CertificadoResponse[]>(`${this.apiUrl}`);
   }
 
   /**
