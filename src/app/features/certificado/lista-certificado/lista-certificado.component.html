@@ -68,25 +68,6 @@
           </svg>
           Cargar Archivo
         </button>
-
-        <button
-          class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-200 flex items-center"
-        >
-          <svg
-            class="w-4 h-4 mr-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M12 4v16m8-8H4"
-            ></path>
-          </svg>
-          Nuevo Certificado
-        </button>
       </div>
     </div>
   </div>
@@ -916,12 +897,12 @@
                   name="file-upload"
                   type="file"
                   class="sr-only"
-                  accept=".pem,.crt,.cer,.p12,.pfx,.key"
+                  accept=".csv"
                   (change)="onFileSelected($event)"
                 />
               </label>
               <p class="mt-1 text-xs text-gray-500">
-                Formatos soportados: PEM, CRT, CER, P12, PFX, KEY (máx. 10MB)
+                Formatos soportados: CSV (máx. 10MB)
               </p>
             </div>
           </div>
@@ -970,41 +951,6 @@
                   ></path>
                 </svg>
               </button>
-            </div>
-          </div>
-
-          <!-- Campos adicionales -->
-          <div class="mt-4 space-y-4">
-            <div>
-              <label
-                for="certificate-name"
-                class="block text-sm font-medium text-gray-700"
-              >
-                Nombre del Certificado
-              </label>
-              <input
-                type="text"
-                id="certificate-name"
-                [(ngModel)]="certificateName"
-                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                placeholder="Ingresa el nombre del certificado"
-              />
-            </div>
-
-            <div>
-              <label
-                for="certificate-description"
-                class="block text-sm font-medium text-gray-700"
-              >
-                Descripción (Opcional)
-              </label>
-              <textarea
-                id="certificate-description"
-                rows="3"
-                [(ngModel)]="certificateDescription"
-                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                placeholder="Descripción del certificado..."
-              ></textarea>
             </div>
           </div>
         </div>

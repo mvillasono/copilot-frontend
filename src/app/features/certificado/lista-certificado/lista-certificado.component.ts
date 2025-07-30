@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CertificadoService } from '../../../core/services/certificado.service';
+import { CertificadoResponse } from '../../../core/models/certificado.model';
 
 @Component({
   selector: 'app-lista-certificado',
@@ -17,6 +19,8 @@ export class ListaCertificadoComponent {
   isUploading = false;
   certificateName = '';
   certificateDescription = '';
+
+  constructor(private certificadoService: CertificadoService) {}
 
   // Modal methods
   openUploadModal() {
@@ -70,7 +74,7 @@ export class ListaCertificadoComponent {
 
   private handleFile(file: File) {
     // Validar tipo de archivo
-    const allowedTypes = ['.pem', '.crt', '.cer', '.p12', '.pfx', '.key'];
+    const allowedTypes = ['.csv'];
     const fileExtension = file.name
       .toLowerCase()
       .substring(file.name.lastIndexOf('.'));
@@ -120,19 +124,32 @@ export class ListaCertificadoComponent {
 
     this.isUploading = true;
 
-    // Simulación de carga de archivo
-    setTimeout(() => {
-      console.log('Archivo cargado:', {
-        file: this.selectedFile,
-        name: this.certificateName,
-        description: this.certificateDescription,
-      });
+    // Llamar al servicio para subir el certificado
+    this.certificadoService.uploadCertificado(this.selectedFile).subscribe({
+      next: (response: CertificadoResponse) => {
+        console.log('Certificado cargado exitosamente:', response);
+        this.isUploading = false;
+        this.closeUploadModal();
+        alert('Certificado cargado exitosamente!');
 
-      this.isUploading = false;
-      this.closeUploadModal();
+        // Aquí podrías emitir un evento o llamar a un método para actualizar la lista
+        // this.refreshCertificadosList();
+      },
+      error: (error) => {
+        console.error('Error al cargar el certificado:', error);
+        this.isUploading = false;
 
-      // Aquí podrías agregar lógica para actualizar la lista de certificados
-      alert('Certificado cargado exitosamente!');
-    }, 2000);
+        // Mostrar mensaje de error más específico
+        let errorMessage =
+          'Error al cargar el certificado. Por favor, inténtalo de nuevo.';
+        if (error.error && error.error.message) {
+          errorMessage = error.error.message;
+        } else if (error.message) {
+          errorMessage = error.message;
+        }
+
+        alert(errorMessage);
+      },
+    });
   }
 }

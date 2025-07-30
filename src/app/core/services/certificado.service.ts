@@ -7,7 +7,7 @@ import { CertificadoResponse } from '../models/certificado.model';
   providedIn: 'root',
 })
 export class CertificadoService {
-  private readonly apiUrl = 'http://localhost:8080/api'; // Cambia por tu URL base del backend
+  private readonly apiUrl = 'http://localhost:8080/api/v1/certified-persons'; // Cambia por tu URL base del backend
 
   constructor(private http: HttpClient) {}
 
@@ -22,7 +22,7 @@ export class CertificadoService {
 
     // Headers para multipart/form-data se establecen automáticamente
     return this.http.post<CertificadoResponse>(
-      `${this.apiUrl}/certificados/upload`,
+      `${this.apiUrl}/batch`,
       formData
     );
   }
