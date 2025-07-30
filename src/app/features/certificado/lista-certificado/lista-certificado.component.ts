@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CertificadoService } from '../../../core/services/certificado.service';
 import { CertificadoResponse } from '../../../core/models/certificado.model';
+import { FechaFormatoPipe } from '../../../shared/pipes/fecha-formato.pipe';
+import { EstadoDescargaPipe } from '../../../shared/pipes/estado-descarga.pipe';
 
 export interface Toast {
   id: string;
@@ -17,7 +19,7 @@ export interface Toast {
   templateUrl: './lista-certificado.component.html',
   styleUrls: ['./lista-certificado.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, FechaFormatoPipe, EstadoDescargaPipe],
 })
 export class ListaCertificadoComponent implements OnInit {
   // Math object for template use
@@ -78,7 +80,7 @@ export class ListaCertificadoComponent implements OnInit {
         cert.code?.toLowerCase().includes(this.searchTerm.toLowerCase());
 
       const matchesStatus =
-        !this.selectedStatus || cert.status === this.selectedStatus;
+        !this.selectedStatus || cert.downloadStatusName === this.selectedStatus;
 
       return matchesSearch && matchesStatus;
     });

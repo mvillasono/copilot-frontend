@@ -3,7 +3,7 @@ import { ListaCertificadoComponent } from './features/certificado/lista-certific
 import { CargarCertificadoComponent } from './features/certificado/cargar-certificado/cargar-certificado.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'certificado', pathMatch: 'full' },
+  { path: '', redirectTo: 'certificado/lista-certificado', pathMatch: 'full' },
   {
     path: 'certificado',
     children: [
