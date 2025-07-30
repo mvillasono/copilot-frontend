@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CertificadoService } from '../../../core/services/certificado.service';
 import { CertificadoResponse } from '../../../core/models/certificado.model';
 import { FechaFormatoPipe } from '../../../shared/pipes/fecha-formato.pipe';
@@ -42,7 +43,17 @@ export class ListaCertificadoComponent implements OnInit {
   certificateName = '';
   certificateDescription = '';
 
-  constructor(private certificadoService: CertificadoService) {}
+  // PDF Preview modal properties
+  showPdfModal = false;
+  pdfUrl: string | null = null;
+  safePdfUrl: SafeResourceUrl | null = null;
+  currentCertificado: CertificadoResponse | null = null;
+  isLoadingPdf = false;
+
+  constructor(
+    private certificadoService: CertificadoService,
+    private sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit() {
     this.loadCertificados();
@@ -234,6 +245,106 @@ export class ListaCertificadoComponent implements OnInit {
     this.certificateDescription = '';
     this.isDragOver = false;
     this.isUploading = false;
+  }
+
+  // PDF Preview methods
+  openPdfPreview(certificado: CertificadoResponse) {
+    if (!certificado.documentPath) {
+      this.showToast(
+        'error',
+        'Error',
+        'No hay documento disponible para este certificado'
+      );
+      return;
+    }
+
+    this.currentCertificado = certificado;
+    this.isLoadingPdf = true;
+    this.showPdfModal = true;
+
+    this.certificadoService.getPdfPreview(certificado.documentPath).subscribe({
+      next: (pdfBlob: Blob) => {
+        // Limpiar URL anterior si existe
+        if (this.pdfUrl) {
+          URL.revokeObjectURL(this.pdfUrl);
+        }
+
+        // Crear URL del blob
+        this.pdfUrl = URL.createObjectURL(pdfBlob);
+
+        // Crear URL segura para el iframe
+        this.safePdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+          this.pdfUrl
+        );
+
+        this.isLoadingPdf = false;
+        /*   this.showToast(
+          'success',
+          'PDF Cargado',
+          'El documento se ha cargado correctamente'
+        ); */
+      },
+      error: (error) => {
+        console.error('Error al cargar PDF:', error);
+        this.isLoadingPdf = false;
+        this.showToast(
+          'error',
+          'Error al cargar PDF',
+          'No se pudo cargar el documento. Verifique que el archivo existe.'
+        );
+        this.closePdfModal();
+      },
+    });
+  }
+
+  closePdfModal() {
+    this.showPdfModal = false;
+    if (this.pdfUrl) {
+      URL.revokeObjectURL(this.pdfUrl);
+      this.pdfUrl = null;
+    }
+    this.safePdfUrl = null;
+    this.currentCertificado = null;
+    this.isLoadingPdf = false;
+  }
+
+  downloadPdf(certificado: CertificadoResponse) {
+    if (!certificado.documentPath) {
+      this.showToast(
+        'error',
+        'Error',
+        'No hay documento disponible para descargar'
+      );
+      return;
+    }
+
+    this.certificadoService.getPdfPreview(certificado.documentPath).subscribe({
+      next: (pdfBlob: Blob) => {
+        // Crear enlace temporal para descarga
+        const url = URL.createObjectURL(pdfBlob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `certificado_${certificado.code || certificado.id}.pdf`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+
+        this.showToast(
+          'success',
+          'Descarga iniciada',
+          'El archivo PDF se está descargando'
+        );
+      },
+      error: (error) => {
+        console.error('Error al descargar PDF:', error);
+        this.showToast(
+          'error',
+          'Error al descargar',
+          'No se pudo descargar el documento'
+        );
+      },
+    });
   }
 
   // Drag and drop methods

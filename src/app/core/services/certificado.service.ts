@@ -8,6 +8,7 @@ import { CertificadoResponse } from '../models/certificado.model';
 })
 export class CertificadoService {
   private readonly apiUrl = 'http://localhost:8080/api/v1/certified-persons'; // Cambia por tu URL base del backend
+  private readonly apiUrlFile = 'http://localhost:8080/api/v1/download'; // Cambia por tu URL base del backend
 
   constructor(private http: HttpClient) {}
 
@@ -70,6 +71,39 @@ export class CertificadoService {
     return this.http.patch<CertificadoResponse>(
       `${this.apiUrl}/certificados/${id}/status`,
       { status }
+    );
+  }
+
+  /**
+   * Obtiene un preview del PDF usando el documentPath
+   * @param documentPath - Ruta del documento en el servidor
+   * @returns Observable con el blob del PDF para preview
+   */
+  getPdfPreview(documentPath: string): Observable<Blob> {
+    // Codifica el path para evitar problemas con caracteres especiales
+    const encodedPath = encodeURIComponent(documentPath);
+
+    return this.http.get(
+      `${this.apiUrlFile}/preview?documentPath=${encodedPath}`,
+      {
+        responseType: 'blob',
+        headers: new HttpHeaders({
+          Accept: 'application/pdf',
+        }),
+      }
+    );
+  }
+
+  /**
+   * Obtiene una URL segura para el preview del PDF
+   * @param documentPath - Ruta del documento en el servidor
+   * @returns Observable con la URL temporal del PDF
+   */
+  getPdfPreviewUrl(documentPath: string): Observable<{ url: string }> {
+    const encodedPath = encodeURIComponent(documentPath);
+
+    return this.http.get<{ url: string }>(
+      `${this.apiUrl}/preview-url?documentPath=${encodedPath}`
     );
   }
 }
