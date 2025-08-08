@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CertificadoService } from '../../../core/services/certificado.service';
@@ -6,6 +6,7 @@ import { CertificadoResponse } from '../../../core/models/certificado.model';
 import { FechaFormatoPipe } from '../../../shared/pipes/fecha-formato.pipe';
 import { EstadoDescargaPipe } from '../../../shared/pipes/estado-descarga.pipe';
 import { PdfModalComponent, Toast } from '../../../shared/components';
+import { interval, Subscription, switchMap, takeWhile } from 'rxjs';
 
 @Component({
   selector: 'app-lista-certificado',
@@ -20,7 +21,7 @@ import { PdfModalComponent, Toast } from '../../../shared/components';
     PdfModalComponent,
   ],
 })
-export class ListaCertificadoComponent implements OnInit {
+export class ListaCertificadoComponent implements OnInit, OnDestroy {
   // Math object for template use
   Math = Math;
 
@@ -45,6 +46,8 @@ export class ListaCertificadoComponent implements OnInit {
   showPdfModal = false;
   currentCertificado: CertificadoResponse | null = null;
 
+    private sub!: Subscription;
+
   constructor(private certificadoService: CertificadoService) {}
 
   ngOnInit() {
@@ -52,24 +55,49 @@ export class ListaCertificadoComponent implements OnInit {
   }
 
   // Certificados methods
-  loadCertificados() {
+   loadCertificados() {
     this.isLoading = true;
-    this.certificadoService.getAllCertificados().subscribe({
-      next: (certificados: CertificadoResponse[]) => {
-        this.certificados = certificados;
-        this.isLoading = false;
-        console.log('Certificados cargados:', certificados);
-      },
-      error: (error) => {
-        console.error('Error al cargar certificados:', error);
-        this.isLoading = false;
-        this.showToast(
-          'error',
-          'Error',
-          'No se pudieron cargar los certificados. Por favor, inténtalo de nuevo.'
-        );
-      },
-    });
+
+    // Inicia un bucle cada 5 segundos
+    this.sub = interval(5000)
+      .pipe(
+        switchMap(() => this.certificadoService.getAllCertificados()),
+        takeWhile(
+          (certificados) =>
+            certificados.some((c) => c.downloadStatusName.toUpperCase() === 'PENDIENTE'),
+          true // Emite también la última vez cuando ya no hay pendientes
+        )
+      )
+      .subscribe({
+        next: (certificados: CertificadoResponse[]) => {
+          this.certificados = certificados;
+          this.isLoading = false;
+          console.log('Certificados cargados:', certificados);
+
+          // Detener manualmente cuando ya no hay pendientes
+          if (!certificados.some((c) => c.downloadStatusName.toUpperCase() === 'PENDIENTE')) {
+            console.log('No hay certificados pendientes, deteniendo...');
+            if (this.certificados.length > 0) {
+                this.sub.unsubscribe();
+                  this.showToast(
+                  'info',
+                  'Información',
+                  'Finalizó la descarga de certificados!'
+                );
+            }
+
+          }
+        },
+        error: (error) => {
+          console.error('Error al cargar certificados:', error);
+          this.isLoading = false;
+          this.showToast(
+            'error',
+            'Error',
+            'No se pudieron cargar los certificados. Por favor, inténtalo de nuevo.'
+          );
+        },
+      });
   }
 
   get filteredCertificados() {
@@ -132,6 +160,11 @@ export class ListaCertificadoComponent implements OnInit {
     this.loadCertificados();
   }
 
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
   // Toast methods
   showToast(
     type: Toast['type'],
@@ -427,5 +460,7 @@ export class ListaCertificadoComponent implements OnInit {
         this.showToast('error', 'Error al cargar', errorMessage);
       },
     });
+
+
   }
 }
